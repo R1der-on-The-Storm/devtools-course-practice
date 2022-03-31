@@ -7,7 +7,6 @@
 TEST(Zaitsev_Alexander_ComplexNumberTest, Can_Create_Zero) {
   double re = 0.0;
   double im = 0.0;
-
   ComplexNumber z(re, im);
 
   EXPECT_EQ(re, z.getRe());
