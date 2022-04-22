@@ -1,12 +1,12 @@
 // Copyright 2022 Zaitsev Alexander
 
+#include "./include/number_translation.h"
+
 #include <map>
 #include <string>
 #include <vector>
 
-#include "include/number_translation.h"
-
-std::map<int, std::string> write_numbers() {
+std::map<int, std::string> translating_a_number_in_a_word::write_numbers() {
   std::map<int, std::string> map;
   map.insert(std::make_pair(0, ""));
   map.insert(std::make_pair(1, "one"));
@@ -40,7 +40,7 @@ std::map<int, std::string> write_numbers() {
   map.insert(std::make_pair(1000, "thousand"));
   return map;
 }
-std::map<std::string, int> write_words() {
+std::map<std::string, int> translating_a_word_in_a_number::write_words() {
   std::map<std::string, int> map;
   map.insert(std::make_pair("", 0));
   map.insert(std::make_pair("one", 1));
@@ -74,7 +74,8 @@ std::map<std::string, int> write_words() {
   map.insert(std::make_pair("thousand", 1000));
   return map;
 }
-std::vector<int> digits_of_number(const int& number) {
+std::vector<int> translating_a_number_in_a_word::digits_of_number(
+    const int& number) {
   std::vector<int> digits_of_number;
   int tmp = number;
   do {
@@ -83,7 +84,8 @@ std::vector<int> digits_of_number(const int& number) {
   } while (tmp > 0);
   return digits_of_number;
 }
-std::string translating_a_number_into_a_word(const int& value) {
+std::string translating_a_number_in_a_word::translating_a_number_into_a_word(
+    const int& value) {
   std::string word = "";
   int number = value;
   if (value < 0) {
@@ -150,7 +152,8 @@ std::string translating_a_number_into_a_word(const int& value) {
   }
   return word += " ";
 }
-int translating_a_word_into_a_number(std::string word) {
+int translating_a_word_in_a_number::translating_a_word_into_a_number(
+    std::string word) {
   std::map<std::string, int> digit(write_words());
   int numbers = 0;
   char space = ' ';
