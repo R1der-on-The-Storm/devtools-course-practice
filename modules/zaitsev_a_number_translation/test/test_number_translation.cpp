@@ -8,6 +8,15 @@
 
 #include "./include/number_translation.h"
 
+TEST(zaitsev_a_translating_a_number_in_a_word, constructor_without_parameters) {
+  ASSERT_NO_THROW(translating_a_number_in_a_word a_number_in_a_word);
+}
+
+TEST(zaitsev_a_translating_a_wordnumber_in_a_number,
+     constructor_without_parameters) {
+  ASSERT_NO_THROW(translating_a_word_in_a_number a_word_in_a_number);
+}
+
 TEST(zaitsev_a_translating_a_number_into_a_word, translate_0) {
   int number = 0;
   translating_a_number_in_a_word number_in_a_word;
