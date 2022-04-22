@@ -17,6 +17,14 @@ TEST(zaitsev_a_translating_a_wordnumber_in_a_number,
   ASSERT_NO_THROW(translating_a_word_in_a_number a_word_in_a_number);
 }
 
+TEST(zaitsev_a_digits_of_number, digits_of_number_11) {
+  std::vector<int> answer = {1, 1};
+  int number = 11;
+  translating_a_number_in_a_word number_in_a_word;
+  std::vector<int> digits(number_in_a_word.digits_of_number(number));
+  ASSERT_EQ(digits, answer);
+}
+
 TEST(zaitsev_a_translating_a_number_into_a_word, translate_0) {
   int number = 0;
   translating_a_number_in_a_word number_in_a_word;
