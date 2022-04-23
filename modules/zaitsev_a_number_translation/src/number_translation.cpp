@@ -2,6 +2,7 @@
 
 #include "./include/number_translation.h"
 
+#include <cmath>
 #include <map>
 #include <string>
 #include <vector>
@@ -97,47 +98,55 @@ std::string translating_a_number_in_a_word::translating_a_number_into_a_word(
   for (int i = rangs_of_digit.size() - 1; i >= 0; i--) {
     if (i > 3) {
       if (rangs_of_digit[i] > 0 && i - 3 == 2) {
-        if (rangs_of_digit[i - 1] * pow(10, i - 1 - 3) + rangs_of_digit[i - 2] >
+        if (rangs_of_digit[i - 1] * std::pow(10, i - 1 - 3) +
+                    rangs_of_digit[i - 2] >
                 10 &&
-            rangs_of_digit[i - 1] * pow(10, i - 1 - 3) + rangs_of_digit[i - 2] <
+            rangs_of_digit[i - 1] * std::pow(10, i - 1 - 3) +
+                    rangs_of_digit[i - 2] <
                 20) {
-          word += digit[rangs_of_digit[i]] + " " + digit[pow(10, i - 3)] + " " +
-                  digit[rangs_of_digit[i - 1] * pow(10, i - 1 - 3) +
+          word += digit[rangs_of_digit[i]] + " " + digit[std::pow(10, i - 3)] +
+                  " " +
+                  digit[rangs_of_digit[i - 1] * std::pow(10, i - 1 - 3) +
                         rangs_of_digit[i - 2]] +
-                  " " + digit[pow(10, 3)] + " ";
+                  " " + digit[std::pow(10, 3)] + " ";
         } else {
-          word += digit[rangs_of_digit[i]] + " " + digit[pow(10, i - 3)] + " " +
-                  digit[rangs_of_digit[i - 1] * pow(10, (i - 1) - 3)] + " " +
-                  digit[rangs_of_digit[i - 2] * pow(10, (i - 2) - 3)] + " " +
-                  digit[pow(10, 3)] + " ";
+          word +=
+              digit[rangs_of_digit[i]] + " " + digit[std::pow(10, i - 3)] +
+              " " + digit[rangs_of_digit[i - 1] * std::pow(10, (i - 1) - 3)] +
+              " " + digit[rangs_of_digit[i - 2] * std::pow(10, (i - 2) - 3)] +
+              " " + digit[std::pow(10, 3)] + " ";
         }
         i = 2;
       } else if (rangs_of_digit[i] > 0 && i - 3 == 1) {
-        if (rangs_of_digit[i] * pow(10, i - 3) + rangs_of_digit[i - 1] > 10 &&
-            rangs_of_digit[i] * pow(10, i - 3) + rangs_of_digit[i - 1] < 20) {
-          word += digit[rangs_of_digit[i] * pow(10, i - 3) +
+        if (rangs_of_digit[i] * std::pow(10, i - 3) + rangs_of_digit[i - 1] >
+                10 &&
+            rangs_of_digit[i] * std::pow(10, i - 3) + rangs_of_digit[i - 1] <
+                20) {
+          word += digit[rangs_of_digit[i] * std::pow(10, i - 3) +
                         rangs_of_digit[i - 1]] +
-                  " " + digit[pow(10, 3)] + " ";
+                  " " + digit[std::pow(10, 3)] + " ";
         } else {
-          word += digit[rangs_of_digit[i] * pow(10, i - 3)] + " " +
-                  digit[rangs_of_digit[i - 1]] + " " + digit[pow(10, 3)] + " ";
+          word += digit[rangs_of_digit[i] * std::pow(10, i - 3)] + " " +
+                  digit[rangs_of_digit[i - 1]] + " " + digit[std::pow(10, 3)] +
+                  " ";
         }
         i = 2;
       }
     }
     if (i > 1) {
       if (rangs_of_digit[i] > 0) {
-        word += digit[rangs_of_digit[i]] + " " + digit[pow(10, i)] + " ";
+        word += digit[rangs_of_digit[i]] + " " + digit[std::pow(10, i)] + " ";
       }
     }
     if (i == 1) {
-      if (rangs_of_digit[i] * pow(10, i) + rangs_of_digit[i - 1] > 10 &&
-          rangs_of_digit[i] * pow(10, i) + rangs_of_digit[i - 1] < 20) {
+      if (rangs_of_digit[i] * std::pow(10, i) + rangs_of_digit[i - 1] > 10 &&
+          rangs_of_digit[i] * std::pow(10, i) + rangs_of_digit[i - 1] < 20) {
         word +=
-            digit[rangs_of_digit[i] * pow(10, i) + rangs_of_digit[i - 1]] + " ";
+            digit[rangs_of_digit[i] * std::pow(10, i) + rangs_of_digit[i - 1]] +
+            " ";
         break;
       } else {
-        word += digit[rangs_of_digit[i] * pow(10, i)] + " " +
+        word += digit[rangs_of_digit[i] * std::pow(10, i)] + " " +
                 digit[rangs_of_digit[i - 1]];
         break;
       }
