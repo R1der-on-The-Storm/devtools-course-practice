@@ -1,4 +1,4 @@
-// Copyright 2022 Popp Maksim
+// Copyright 2022 Krivosheev Miron
 
 #include <gtest/gtest.h>
 
